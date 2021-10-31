@@ -2,13 +2,16 @@ import pytest
 
 from src.calc.mortgage_calculator import MortgageCalculator
 
+
 @pytest.fixture()
 def fixture_mortgage_calculator():
-    return MortgageCalculator(property_price=500000,
-                                             deposit=0.10,
-                                             interest=0.008,
-                                             mortgage_duration=25,
-                                             cpi=0.03)
+    return MortgageCalculator(
+        property_price=500000,
+        deposit=0.10,
+        interest=0.008,
+        mortgage_duration=25,
+        cpi=0.03,
+    )
 
 
 def test_monthly_mortgage_duration(fixture_mortgage_calculator):
@@ -19,6 +22,7 @@ def test_monthly_mortgage_duration(fixture_mortgage_calculator):
     actual = fixture_mortgage_calculator.mortgage_duration_months
 
     actual == expected
+
 
 def test_mortgage_amount(fixture_mortgage_calculator):
     # When
