@@ -1,6 +1,6 @@
 import pytest
 
-from src.calc.mortgage_calculator import MortgageCalculator
+from src.calc.mortgage_calculator import MortgageCalculator, MortgageHelpToBuyCalculator
 
 
 @pytest.fixture()
@@ -70,5 +70,39 @@ def test_sdlt_upper():
 
     # then
     actual = MortgageCalculator(600000).sdlt
+
+    assert actual == expected
+
+
+def test_pass_in_non_float():
+    with pytest.raises(ValueError):
+        MortgageCalculator(deposit=2)
+
+
+def test_pass_in_non_percentage():
+    with pytest.raises(ValueError):
+        MortgageCalculator(deposit=10)
+
+
+def test_mortgage_help_to_buy_equity_amount():
+    # When
+    expected = 120000
+
+    # Then
+    actual = MortgageHelpToBuyCalculator(
+        property_price=600000, help_to_buy_equity=0.2
+    ).help_to_buy_equity_amount
+
+    assert actual == expected
+
+
+def test_mortgage_help_to_buy_calculator():
+    # When
+    expected = 330000
+
+    # Then
+    actual = MortgageHelpToBuyCalculator(
+        property_price=600000, deposit=0.05, help_to_buy_equity=0.4
+    ).mortgage_amount
 
     assert actual == expected

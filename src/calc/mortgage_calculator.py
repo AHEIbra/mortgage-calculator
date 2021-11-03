@@ -6,7 +6,11 @@ class MortgageCalculator:
         interest: int = 0.008,
         mortgage_duration: int = 25,
         cpi: float = 0.03,
-    ):
+    ) -> None:
+        if (not all(isinstance(var, float) for var in [deposit, interest, cpi])) or (
+            all(var > 1 for var in [deposit, interest, cpi])
+        ):
+            raise ValueError("Value must be a percentage!")
 
         self.property_price = property_price
         self.deposit = deposit
@@ -50,4 +54,20 @@ class MortgageCalculator:
                 * (1 + self.monthly_interest) ** self.mortgage_duration_months
             )
             / (((1 + self.monthly_interest) ** self.mortgage_duration_months) - 1)
+        )
+
+
+class MortgageHelpToBuyCalculator(MortgageCalculator):
+    def __init__(self, help_to_buy_equity: float = 0.4, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.help_to_buy_equity = help_to_buy_equity
+
+    @property
+    def help_to_buy_equity_amount(self) -> float:
+        return self.property_price * self.help_to_buy_equity
+
+    @property
+    def mortgage_amount(self) -> float:
+        return (
+            self.property_price - self.deposit_amount - self.help_to_buy_equity_amount
         )
