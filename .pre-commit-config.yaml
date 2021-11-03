@@ -24,3 +24,5 @@ repos:
             entry: pytest
             pass_filenames: false
             always_run: true
+            stages:
+              - push
