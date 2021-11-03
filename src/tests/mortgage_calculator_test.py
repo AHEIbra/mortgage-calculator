@@ -106,3 +106,8 @@ def test_mortgage_help_to_buy_calculator():
     ).mortgage_amount
 
     assert actual == expected
+
+
+def test_pass_in_non_percentage_to_help_to_buy_equity():
+    with pytest.raises(ValueError):
+        MortgageHelpToBuyCalculator(help_to_buy_equity=10)

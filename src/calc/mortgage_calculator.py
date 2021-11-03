@@ -60,6 +60,9 @@ class MortgageCalculator:
 class MortgageHelpToBuyCalculator(MortgageCalculator):
     def __init__(self, help_to_buy_equity: float = 0.4, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
+        if (not isinstance(help_to_buy_equity, float)) and (help_to_buy_equity > 1):
+            raise ValueError("help_to_buy_equity must be a float less than 1")
+
         self.help_to_buy_equity = help_to_buy_equity
 
     @property

@@ -21,6 +21,3 @@ if __name__ == "__main__":
     print("Mortgage HTB amount", htb_calc.mortgage_amount)
     print("HTB equity", htb_calc.help_to_buy_equity_amount)
     print("HTB sdlt", htb_calc.sdlt)
-
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
