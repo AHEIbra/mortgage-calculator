@@ -10,7 +10,7 @@ class MortgageCalculator:
         if (not all(isinstance(var, float) for var in [deposit, interest, cpi])) or (
             all(var > 1 for var in [deposit, interest, cpi])
         ):
-            raise ValueError("Value must be a percentage!")
+            raise ValueError('Value must be a percentage!')
 
         self.property_price = property_price
         self.deposit = deposit
@@ -61,7 +61,7 @@ class MortgageHelpToBuyCalculator(MortgageCalculator):
     def __init__(self, help_to_buy_equity: float = 0.4, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         if (not isinstance(help_to_buy_equity, float)) and (help_to_buy_equity > 1):
-            raise ValueError("help_to_buy_equity must be a float less than 1")
+            raise ValueError('help_to_buy_equity must be a float less than 1')
 
         self.help_to_buy_equity = help_to_buy_equity
 

@@ -1,6 +1,9 @@
 import pytest
 
-from src.calc.mortgage_calculator import MortgageCalculator, MortgageHelpToBuyCalculator
+from src.mortgage_calculator.mortgage_calculator import (
+    MortgageCalculator,
+    MortgageHelpToBuyCalculator,
+)
 
 
 @pytest.fixture()
