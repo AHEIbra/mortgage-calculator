@@ -1,6 +1,6 @@
 import pytest
 
-from src.mortgage_calculator.mortgage_calculator import (
+from mortgage_calculator.calculator import (
     MortgageCalculator,
     MortgageHelpToBuyCalculator,
 )

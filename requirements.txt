@@ -1,3 +1,4 @@
+click
 mock
 numpy==1.21.3
 pandas==1.3.4

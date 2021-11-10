@@ -47,7 +47,6 @@ class MortgageCalculator:
 
     def calculate_monthly_mortgage(self) -> float:
         # Monthly payment = P[i(1+i)^n)]/[(q+i)^n - 1)
-
         return self.mortgage_amount * (
             (
                 self.monthly_interest
