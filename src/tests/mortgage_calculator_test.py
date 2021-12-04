@@ -1,3 +1,5 @@
+import math
+
 import pytest
 
 from mortgage_calculator.calculator import (
@@ -114,3 +116,27 @@ def test_mortgage_help_to_buy_calculator():
 def test_pass_in_non_percentage_to_help_to_buy_equity():
     with pytest.raises(ValueError):
         MortgageHelpToBuyCalculator(help_to_buy_equity=10)
+
+
+def test_mortgage_final_cash_available():
+    # When
+    expected = 4800
+
+    # Then
+    actual = MortgageCalculator(
+        property_price=400000, deposit=0.10, mortgage_fees=2200, available_cash=52000
+    ).final_cash_available
+
+    assert actual == expected
+
+
+def test_total_mortgage_cost():
+    # When
+    expected = 512148.219
+
+    # Then
+    actual = MortgageCalculator(
+        property_price=400000, deposit=0.10, interest=0.03
+    ).total_mortgage_cost
+
+    assert round(actual) == round(expected)
